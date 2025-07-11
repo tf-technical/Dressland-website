@@ -34,7 +34,7 @@ export default function Header() {
   });
 
   const navLinks = [
-    { id: "collections", label: "Collections", href: "#category" },
+    { id: "collections", label: "Collections", href: "#collection" },
     { id: "new-trends", label: "New Trends", href: "#new-trends" },
     { id: "about-us", label: "About Us", href: "#about-us" },
   ];

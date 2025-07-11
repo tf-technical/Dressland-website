@@ -20,7 +20,7 @@ export default function Categories({ active, setActive }) {
 
   return (
     <>
-      <section className=" md:grid h-[250px] grid-cols-4 bg-[#4A505F] text-white px-4 md:px-12 lg:px-20 xl:px-32 hidden ">
+      <section id="collection" className=" md:grid h-[250px] grid-cols-4 bg-[#4A505F] text-white px-4 md:px-12 lg:px-20 xl:px-32 hidden ">
         {categories.map(({ name, iconType, Icon, iconSrc }, idx) => (
           <button
             key={name}
