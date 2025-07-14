@@ -193,7 +193,7 @@ export default function HeroSlider() {
 
   const slides = [
     {
-      image: "/hero-background.jpg",
+      image: "/hero-background.png",
       title: (
         <>
           INDUSTRIAL
@@ -211,7 +211,7 @@ export default function HeroSlider() {
         "Dynamic sportswear that empowers your team spirit and comfort.",
     },
     {
-      image: "/hero-background.jpg",
+      image: "/hero-background.png",
       title: "UNIFORMS",
       subtitle:
         "Tailored uniforms that reflect your identity with style and precision.",
