@@ -17,7 +17,7 @@ export default function CustomTshirtSection() {
           overflow-hidden
           flex-row
           items-center
-          bg-[#E6D8C8]
+        bg-[#dac5ac]
           px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32
           py-12 md:py-0
         "
@@ -38,7 +38,7 @@ export default function CustomTshirtSection() {
           className="
             absolute top-[5%] right-20
             text-[7rem]
-            font-bold text-[#d4c7b9]
+            font-bold text-[#d1a679]
             opacity-60 z-0 leading-none select-none
           "
         >
@@ -78,7 +78,7 @@ export default function CustomTshirtSection() {
     w-full
     relative
     overflow-hidden
-    bg-[#E6D8C8]
+   bg-[#dac5ac]
     px-4
     py-12
     min-h-[320px]
@@ -92,7 +92,7 @@ export default function CustomTshirtSection() {
       right-4
       text-2xl
       font-bold
-      text-[#d4c7b9]
+     text-[#d1a679]
       opacity-60
       z-0
       leading-none

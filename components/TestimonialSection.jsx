@@ -58,7 +58,7 @@ export default function TestimonialSection() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="bg-[#E6D8C8] py-20 px-6 md:px-12 lg:px-20 xl:px-32">
+    <section className="bg-[#dac5ac] py-20 px-6 md:px-12 lg:px-20 xl:px-32">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2

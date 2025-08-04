@@ -10,7 +10,7 @@ export default function UniformsSection({ activeCategory }) {
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
 
   const sections = {
-    "Uniforms": [
+    Uniforms: [
       {
         title: "Blazers",
         img: "/blazers.jpg",
@@ -59,8 +59,7 @@ export default function UniformsSection({ activeCategory }) {
         info: ["Reinforced Stitching", "All-day Comfort", "GET A QUOTE"],
       },
     ],
-
-     "Sustainables": [
+    Sustainables: [
       {
         title: "T-Shirts",
         img: "/SustainableT.shirts.webp",
@@ -104,7 +103,6 @@ export default function UniformsSection({ activeCategory }) {
         info: ["Adjustable Fit", "Sun Protection", "GET A QUOTE"],
       },
     ],
-   
   };
 
   const cards = sections[activeCategory] || [];
@@ -121,7 +119,7 @@ export default function UniformsSection({ activeCategory }) {
           : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
       </p>
 
-<div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 place-items-center">
+      <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 place-items-center">
         {cards.map((card, index) => {
           const cardId = `${activeCategory}-${index}`;
           const showOverlay = hoverCard === cardId || activeCard === cardId;
@@ -160,15 +158,16 @@ export default function UniformsSection({ activeCategory }) {
                   {card.info.slice(0, -1).map((line) => (
                     <span key={line}>{line}</span>
                   ))}
-                  <button
-                    className="underline font-medium"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setEnquiryModalOpen(true);
-                    }}
-                  >
-                    {card.info.at(-1)}
-                  </button>
+                  <EnquiryModal
+                    trigger={
+                      <button
+                        className="underline font-medium text-white"
+                        onClick={(e) => e.stopPropagation()} // prevent parent click
+                      >
+                        {card.info.at(-1)}
+                      </button>
+                    }
+                  />
                 </div>
               </div>
 
