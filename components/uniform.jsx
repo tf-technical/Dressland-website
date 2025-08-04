@@ -10,94 +10,101 @@ export default function UniformsSection({ activeCategory }) {
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
 
   const sections = {
-    Uniforms: [
+    "Uniforms": [
       {
-        title: "SCHOOL",
-        img: "/school.jpg",
+        title: "Blazers",
+        img: "/blazers.jpg",
         info: ["Custom‑fit, Durable", "Tailored, Comfortable", "GET A QUOTE"],
       },
       {
-        title: "CORPORATE",
-        img: "/cheerful-brunette-business-women-student-white-button-up-shirt-smiling-confident-cheerful (1).jpg",
+        title: "Shirts",
+        img: "/shirts.jpg",
         info: ["Elegant Styles", "Perfect Fit", "GET A QUOTE"],
       },
       {
-        title: "HORECA",
-        img: "/horeca.jpg",
-        info: ["Chef Coats", "Aprons, Breathable", "GET A QUOTE"],
+        title: "Trousers",
+        img: "/Trousers.webp",
+        info: ["Formal Look", "Long-Lasting", "GET A QUOTE"],
       },
       {
-        title: "HOUSE KEEPING",
-        img: "/housekeeping.jpg",
-        info: ["Easy Maintenance", "Functional Design", "GET A QUOTE"],
+        title: "Polo T-Shirts",
+        img: "/polo _tshirt.webp",
+        info: ["Stylish Casual", "Breathable Fabric", "GET A QUOTE"],
+      },
+      {
+        title: "Jeans",
+        img: "/corporate_jeans.jpg",
+        info: ["Stretchable Fit", "Everyday Wear", "GET A QUOTE"],
       },
     ],
     "Industrial Safety": [
       {
-        title: "SAFETY HELMETS",
-        img: "/school.jpg",
-        info: ["High Impact Resistance", "Comfortable Fit", "GET A QUOTE"],
+        title: "Boiler Suits",
+        img: "/boiler_suits.jpg",
+        info: ["Full Coverage", "Durable Material", "GET A QUOTE"],
       },
       {
-        title: "SAFETY GLOVES",
-        img: "/cheerful-brunette-business-women-student-white-button-up-shirt-smiling-confident-cheerful (1).jpg",
-        info: ["Heat Resistant", "Durable Grip", "GET A QUOTE"],
+        title: "F.R. Boiler Suits",
+        img: "/frboiler_suits.jpg",
+        info: ["Flame Resistant", "Safe & Comfortable", "GET A QUOTE"],
       },
       {
-        title: "SAFETY SHOES",
-        img: "/horeca.jpg",
-        info: ["Steel Toe", "Anti-Slip", "GET A QUOTE"],
+        title: "Shirts",
+        img: "/industrial_shirts.jpg",
+        info: ["Functional Fit", "Tough Fabric", "GET A QUOTE"],
       },
       {
-        title: "REFLECTIVE JACKETS",
-        img: "/housekeeping.jpg",
-        info: ["High Visibility", "Breathable Fabric", "GET A QUOTE"],
+        title: "Trousers",
+        img: "/industrialunifrom_trousers.webp",
+        info: ["Reinforced Stitching", "All-day Comfort", "GET A QUOTE"],
       },
     ],
-    Sustainables: [
+
+     "Sustainables": [
       {
-        title: "ORGANIC COTTON",
-        img: "/school.jpg",
-        info: ["Eco-Friendly", "Soft Texture", "GET A QUOTE"],
+        title: "T-Shirts",
+        img: "/SustainableT.shirts.webp",
+        info: ["Eco Friendly", "Modern Fit", "GET A QUOTE"],
       },
       {
-        title: "RECYCLED POLYESTER",
-        img: "/cheerful-brunette-business-women-student-white-button-up-shirt-smiling-confident-cheerful (1).jpg",
-        info: ["Sustainable", "Durable", "GET A QUOTE"],
+        title: "Organic Cotton T-Shirts",
+        img: "/Organic _cottontshirt.webp",
+        info: ["Chemical-Free", "Natural Comfort", "GET A QUOTE"],
       },
       {
-        title: "BAMBOO FABRIC",
-        img: "/horeca.jpg",
-        info: ["Antibacterial", "Breathable", "GET A QUOTE"],
-      },
-      {
-        title: "HEMP FABRIC",
-        img: "/housekeeping.jpg",
-        info: ["Strong Fibers", "Environment Friendly", "GET A QUOTE"],
+        title: "Sweatshirts",
+        img: "/Sweatshirts.webp",
+        info: ["Recycled Materials", "Sustainable Style", "GET A QUOTE"],
       },
     ],
     Sportswear: [
       {
-        title: "TRACKSUITS",
-        img: "/school.jpg",
-        info: ["Flexible Fabric", "Comfortable Fit", "GET A QUOTE"],
+        title: "Dryfit T-Shirts",
+        img: "/dry fit shirt.webp",
+        info: ["Moisture Wicking", "Quick Dry", "GET A QUOTE"],
       },
       {
-        title: "JERSEYS",
-        img: "/cheerful-brunette-business-women-student-white-button-up-shirt-smiling-confident-cheerful (1).jpg",
-        info: ["Breathable", "Vibrant Colors", "GET A QUOTE"],
+        title: "Sweatshirts",
+        img: "/sweatshirt.jpg",
+        info: ["Warm & Soft", "Athletic Fit", "GET A QUOTE"],
       },
       {
-        title: "SHORTS",
-        img: "/horeca.jpg",
-        info: ["Lightweight", "Quick Dry", "GET A QUOTE"],
+        title: "Jackets",
+        img: "/jackets.webp",
+        info: ["Windproof", "Sporty Design", "GET A QUOTE"],
       },
       {
-        title: "SPORTS TEES",
-        img: "/housekeeping.jpg",
-        info: ["Moisture Wicking", "Soft Touch", "GET A QUOTE"],
+        title: "Track Pants",
+        img: "/track_pants.jpg",
+        info: ["Stretch Fit", "Breathable Fabric", "GET A QUOTE"],
+      },
+      {
+        title: "Caps",
+        img: "/caps.jpg",
+        info: ["Adjustable Fit", "Sun Protection", "GET A QUOTE"],
       },
     ],
+   
   };
 
   const cards = sections[activeCategory] || [];
@@ -114,7 +121,7 @@ export default function UniformsSection({ activeCategory }) {
           : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
       </p>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 place-items-center">
+<div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 place-items-center">
         {cards.map((card, index) => {
           const cardId = `${activeCategory}-${index}`;
           const showOverlay = hoverCard === cardId || activeCard === cardId;
@@ -126,7 +133,6 @@ export default function UniformsSection({ activeCategory }) {
               onMouseEnter={() => setHoverCard(cardId)}
               onMouseLeave={() => setHoverCard(null)}
               onClick={() => {
-                // Mobile tap behavior
                 if (window.innerWidth < 768) {
                   setActiveCard(cardId);
                   setTimeout(() => {
@@ -148,9 +154,7 @@ export default function UniformsSection({ activeCategory }) {
 
                 <div
                   className={`absolute bottom-0 ${
-                    showOverlay
-                      ? "translate-y-0"
-                      : "translate-y-[90%]"
+                    showOverlay ? "translate-y-0" : "translate-y-[90%]"
                   } transition-all duration-150 left-0 w-full p-4 bg-[#28275b] text-white text-sm flex flex-col items-center gap-1`}
                 >
                   {card.info.slice(0, -1).map((line) => (
@@ -179,7 +183,6 @@ export default function UniformsSection({ activeCategory }) {
         })}
       </div>
 
-      {/* Enquire Now button below the cards */}
       <EnquiryModal
         open={enquiryModalOpen}
         onOpenChange={setEnquiryModalOpen}
