@@ -17,6 +17,7 @@ export default function HeroSlider() {
       title: (
         <>
           INDUSTRIAL
+          <br />
           SAFETY
         </>
       ),
@@ -24,18 +25,41 @@ export default function HeroSlider() {
         "Safety wear with performance and style for demanding work environments.",
     },
     {
-      image: "/hero-background.png",
+      image: "/hero-background1.png",
       title: "SPORTSWEAR",
       subtitle:
         "Dynamic sportswear that empowers your team spirit and comfort.",
     },
     {
-      image: "/hero-background.png",
-      title: "UNIFORMS",
+      image: "/hero-background2.png",
+      title: "CORPORATE UNIFORMS",
+      subtitle:
+        "Tailored uniforms that reflect your identity with style and precision.",
+    },
+    {
+      image: "/hero-background3.png",
+      title: "SUSTAINABLE WEAR",
       subtitle:
         "Tailored uniforms that reflect your identity with style and precision.",
     },
   ];
+
+  const getMobileImageClass = (title) => {
+  if (title === "SPORTSWEAR") return "object-contain scale-[1.4] translate-x-4";
+  if (title === "CORPORATE UNIFORMS") return "object-contain scale-[1.4] -translate-x-4";
+  if (title === "SUSTAINABLE WEAR") return "object-contain scale-[1.1]";
+  if (title.includes("INDUSTRIAL SAFETY")) return "object-contain scale-[1.5]";
+  return "object-contain";
+};
+
+
+  const getDesktopImageClass = (title) => {
+    if (title === "SPORTSWEAR")
+      return "object-contain sm:scale-[1.0] sm:object-center sm:translate-x-16";
+    if (title === "SUSTAINABLE WEAR")
+      return "object-contain sm:scale-[1.0] sm:object-center";
+    return "object-contain sm:scale-[1.1] sm:object-center";
+  };
 
   return (
     <div className="relative w-full h-[50vh] sm:h-[100dvh] bg-[#dfd4c7] overflow-hidden">
@@ -49,72 +73,91 @@ export default function HeroSlider() {
         autoplay={{ delay: 7000 }}
         className="w-full h-full"
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative w-full h-full bg-[#dac5ac]">
-              <Image
-                src={slide.image}
-                alt={
-                  typeof slide.title === "string" ? slide.title : "Hero Slide"
-                }
-                fill
-                className="object-cover object-center"
-                priority
-              />
+        {slides.map((slide, index) => {
+          const titleText =
+            typeof slide.title === "string" ? slide.title : "";
 
-              {/* Overlay */}
-
-              {/* Content */}
-              <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-12 z-20">
-                <div className="text-center max-w-[1000px]">
-                  <h2
-                    className="
-                      text-white
-                      text-xs
-                      sm:text-lg
-                      md:text-2xl
-                      lg:text-3xl
-                      font-medium
-                      mb-2
-                      sm:mb-4
-                      drop-shadow-md
-                    "
-                  >
-                    {slide.subtitle}
-                  </h2>
-
-                  <h1
-                    className="
-                      text-white
-                      text-2xl
-                      sm:text-5xl
-                      md:text-6xl
-                      lg:text-7xl
-                      font-bold
-                      drop-shadow-md
-                      mb-4
-                      sm:mb-6
-                      leading-tight
-                      sm:leading-snug
-                    "
-                  >
-                    {slide.title}
-                  </h1>
-
-                  <EnquiryModal
-                    trigger={
-                      <button
-                        className="px-4 py-2 sm:px-6 sm:py-3 bg-[#f0f0f0d6] text-[#2B2961] text-xs sm:text-base font-semibold hover:bg-[#e0e0e0] transition rounded"
-                      >
-                        ENQUIRE NOW
-                      </button>
-                    }
+          return (
+            <SwiperSlide key={index}>
+              <div className="relative w-full h-full bg-[#dac5ac]">
+                {/* Desktop Image */}
+                <div className="hidden sm:block">
+                  <Image
+                    src={slide.image}
+                    alt={titleText || "Hero Slide"}
+                    fill
+                    className={`${getDesktopImageClass(
+                      titleText
+                    )} transition-transform duration-500`}
+                    priority
                   />
                 </div>
+
+                {/* Mobile Image */}
+                <div className="block sm:hidden">
+                  <Image
+                    src={slide.image}
+                    alt={titleText || "Hero Slide"}
+                    fill
+                    className={`${getMobileImageClass(
+                      titleText
+                    )} transition-transform duration-500`}
+                    priority
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-12 z-20">
+                  <div className="text-center max-w-[1000px]">
+                    <h2
+                      className="
+                        text-white
+                        text-xs
+                        sm:text-lg
+                        md:text-2xl
+                        lg:text-3xl
+                        font-medium
+                        mb-2
+                        sm:mb-4
+                        drop-shadow-md
+                      "
+                    >
+                      {slide.subtitle}
+                    </h2>
+
+                    <h1
+                      className="
+                        text-white
+                        text-2xl
+                        sm:text-5xl
+                        md:text-6xl
+                        lg:text-7xl
+                        font-bold
+                        drop-shadow-md
+                        mb-4
+                        sm:mb-6
+                        leading-tight
+                        sm:leading-snug
+                      "
+                    >
+                      {slide.title}
+                    </h1>
+
+                    <EnquiryModal
+                      trigger={
+                        <button
+                          className="px-4 py-2 sm:px-6 sm:py-3 bg-[#f0f0f0d6] text-[#2B2961] text-xs sm:text-base font-semibold hover:bg-[#e0e0e0] transition rounded"
+                        >
+                          ENQUIRE NOW
+                        </button>
+                      }
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
 
       {/* Prev Button */}

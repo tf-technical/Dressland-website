@@ -10,7 +10,7 @@ export default function UniformsSection({ activeCategory }) {
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
 
   const sections = {
-    Uniforms: [
+    "Corporate Uniforms": [
       {
         title: "Blazers",
         img: "/blazers.jpg",
@@ -75,6 +75,21 @@ export default function UniformsSection({ activeCategory }) {
         img: "/Sweatshirts.webp",
         info: ["Recycled Materials", "Sustainable Style", "GET A QUOTE"],
       },
+      {
+        title: "Mens Polo T-shirt",
+        img: "/mens_polotshirt.webp",
+        info: ["Classic Fit", "Breathable Fabric", "GET A QUOTE"],
+      },
+      {
+        title: "Mens Round Neck T-shirt",
+        img: "/mens_roundneck_tshirt.jpg",
+        info: ["Soft Cotton Blend", "Everyday Comfort", "GET A QUOTE"],
+      },
+      {
+        title: "Hoodies",
+        img: "/hoodie.jpg",
+        info: ["Warm & Cozy", "Perfect for All Seasons", "GET A QUOTE"],
+      },
     ],
     Sportswear: [
       {
@@ -114,8 +129,8 @@ export default function UniformsSection({ activeCategory }) {
       </h2>
 
       <p className="mt-6 max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
-        {activeCategory === "Uniforms"
-          ? "We specialize in creating custom uniforms tailored to your exact needs and preferences."
+        {activeCategory === "Corporate Uniforms"
+          ? "We specialize in creating custom corporate uniforms tailored to your exact needs and preferences."
           : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
       </p>
 
