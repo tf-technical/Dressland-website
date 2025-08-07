@@ -13,14 +13,8 @@ export default function HeroSlider() {
 
   const slides = [
     {
-      image: "/hero-background.png",
-      title: (
-        <>
-          INDUSTRIAL
-          <br />
-          SAFETY
-        </>
-      ),
+      image: "/hero-background5.png",
+      title: "INDUSTRIAL SAFETY",
       subtitle:
         "Safety wear with performance and style for demanding work environments.",
     },
@@ -45,10 +39,14 @@ export default function HeroSlider() {
   ];
 
   const getMobileImageClass = (title) => {
-  if (title === "SPORTSWEAR") return "object-contain scale-[1.4] translate-x-4";
-  if (title === "CORPORATE UNIFORMS") return "object-contain scale-[1.4] -translate-x-4";
-  if (title === "SUSTAINABLE WEAR") return "object-contain scale-[1.1]";
-  if (title.includes("INDUSTRIAL SAFETY")) return "object-contain scale-[1.5]";
+  if (title === "SPORTSWEAR")
+    return "object-contain scale-[1.0] translate-x-4";
+  if (title === "CORPORATE UNIFORMS")
+    return "object-contain scale-[1.0] -translate-x-4";
+  if (title === "SUSTAINABLE WEAR")
+    return "object-contain scale-[1.0]";
+  if (title === "INDUSTRIAL SAFETY")
+    return "object-contain scale-[1.0]"; // Decreased from 1.5
   return "object-contain";
 };
 
@@ -58,6 +56,8 @@ export default function HeroSlider() {
       return "object-contain sm:scale-[1.0] sm:object-center sm:translate-x-16";
     if (title === "SUSTAINABLE WEAR")
       return "object-contain sm:scale-[1.0] sm:object-center";
+    if (title === "CORPORATE UNIFORMS")
+      return "object-contain sm:scale-[1.0] sm:object-center sm:translate-y-6";
     return "object-contain sm:scale-[1.1] sm:object-center";
   };
 
@@ -74,8 +74,7 @@ export default function HeroSlider() {
         className="w-full h-full"
       >
         {slides.map((slide, index) => {
-          const titleText =
-            typeof slide.title === "string" ? slide.title : "";
+          const titleText = slide.title;
 
           return (
             <SwiperSlide key={index}>
@@ -112,14 +111,17 @@ export default function HeroSlider() {
                     <h2
                       className="
                         text-white
-                        text-xs
-                        sm:text-lg
-                        md:text-2xl
-                        lg:text-3xl
+                        text-[10px]
+                        sm:text-sm
+                        md:text-xl
+                        lg:text-2xl
                         font-medium
                         mb-2
                         sm:mb-4
                         drop-shadow-md
+                        whitespace-nowrap
+                        overflow-hidden
+                        text-ellipsis
                       "
                     >
                       {slide.subtitle}
@@ -140,7 +142,13 @@ export default function HeroSlider() {
                         sm:leading-snug
                       "
                     >
-                      {slide.title}
+                      {slide.title === "CORPORATE UNIFORMS" ? (
+                        <>
+                          CORPORATE <br className="block sm:hidden" /> UNIFORMS
+                        </>
+                      ) : (
+                        slide.title
+                      )}
                     </h1>
 
                     <EnquiryModal

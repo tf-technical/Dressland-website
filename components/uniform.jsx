@@ -39,24 +39,34 @@ export default function UniformsSection({ activeCategory }) {
     ],
     "Industrial Safety": [
       {
-        title: "Boiler Suits",
-        img: "/boiler_suits.jpg",
-        info: ["Full Coverage", "Durable Material", "GET A QUOTE"],
-      },
-      {
-        title: "F.R. Boiler Suits",
+        title: "F.R. Suit",
         img: "/frboiler_suits.jpg",
         info: ["Flame Resistant", "Safe & Comfortable", "GET A QUOTE"],
       },
       {
-        title: "Shirts",
-        img: "/industrial_shirts.jpg",
-        info: ["Functional Fit", "Tough Fabric", "GET A QUOTE"],
+        title: "Aluminised Fire Proximity Suit",
+        img: "/aluminised-fire-proximity-suits.jpg",
+        info: ["Heat Protection", "Reflective Layer", "GET A QUOTE"],
       },
       {
-        title: "Trousers",
-        img: "/industrialunifrom_trousers.webp",
-        info: ["Reinforced Stitching", "All-day Comfort", "GET A QUOTE"],
+        title: "Helmets",
+        img: "/helmet.jpg",
+        info: ["Impact Resistant", "Lightweight Design", "GET A QUOTE"],
+      },
+      {
+        title: "Safety Shoes",
+        img: "/safety_shooes.jpg",
+        info: ["Anti-Slip Sole", "Toe Protection", "GET A QUOTE"],
+      },
+      {
+        title: "Safety Eyewear",
+        img: "/eye_wear.webp",
+        info: ["Scratch Resistant", "UV Protection", "GET A QUOTE"],
+      },
+      {
+        title: "Safety Jacket",
+        img: "/safety_jackets.jpg",
+        info: ["High Visibility", "Weather Resistant", "GET A QUOTE"],
       },
     ],
     Sustainables: [
@@ -67,7 +77,7 @@ export default function UniformsSection({ activeCategory }) {
       },
       {
         title: "Organic Cotton T-Shirts",
-        img: "/Organic _cottontshirt.webp",
+        img: "/Organic _cottontshirt.jpg",
         info: ["Chemical-Free", "Natural Comfort", "GET A QUOTE"],
       },
       {
@@ -82,7 +92,7 @@ export default function UniformsSection({ activeCategory }) {
       },
       {
         title: "Mens Round Neck T-shirt",
-        img: "/mens_roundneck_tshirt.jpg",
+        img: "/mens_roundneck_tshirt.webp",
         info: ["Soft Cotton Blend", "Everyday Comfort", "GET A QUOTE"],
       },
       {
@@ -94,7 +104,7 @@ export default function UniformsSection({ activeCategory }) {
     Sportswear: [
       {
         title: "Dryfit T-Shirts",
-        img: "/dry fit shirt.webp",
+        img: "/dry fit shirt.jpg",
         info: ["Moisture Wicking", "Quick Dry", "GET A QUOTE"],
       },
       {
@@ -104,12 +114,12 @@ export default function UniformsSection({ activeCategory }) {
       },
       {
         title: "Jackets",
-        img: "/jackets.webp",
+        img: "/jackets.jpg",
         info: ["Windproof", "Sporty Design", "GET A QUOTE"],
       },
       {
         title: "Track Pants",
-        img: "/track_pants.jpg",
+        img: "/track_pants.webp",
         info: ["Stretch Fit", "Breathable Fabric", "GET A QUOTE"],
       },
       {
@@ -123,7 +133,10 @@ export default function UniformsSection({ activeCategory }) {
   const cards = sections[activeCategory] || [];
 
   return (
-    <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-20 text-center">
+    <section
+      id={activeCategory.replace(/\s+/g, '-')}
+      className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-20 text-center"
+    >
       <h2 className="text-4xl md:text-5xl font-extrabold text-[#28275b]">
         {activeCategory}
       </h2>
@@ -167,8 +180,8 @@ export default function UniformsSection({ activeCategory }) {
 
                 <div
                   className={`absolute bottom-0 ${
-                    showOverlay ? "translate-y-0" : "translate-y-[90%]"
-                  } transition-all duration-150 left-0 w-full p-4 bg-[#28275b] text-white text-sm flex flex-col items-center gap-1`}
+                    showOverlay ? "translate-y-0" : "translate-y-[90%]"}
+                    transition-all duration-150 left-0 w-full p-4 bg-[#28275b] text-white text-sm flex flex-col items-center gap-1`}
                 >
                   {card.info.slice(0, -1).map((line) => (
                     <span key={line}>{line}</span>
@@ -177,7 +190,7 @@ export default function UniformsSection({ activeCategory }) {
                     trigger={
                       <button
                         className="underline font-medium text-white"
-                        onClick={(e) => e.stopPropagation()} // prevent parent click
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {card.info.at(-1)}
                       </button>

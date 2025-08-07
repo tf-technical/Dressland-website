@@ -12,10 +12,26 @@ import {
 
 export default function Categories({ active, setActive }) {
   const categories = [
-    { value:     "Corporate Uniforms", display: <>CORPORATE <br /> UNIFORMS</>, iconSrc: "/icon1.png" },
-    { value: "Industrial Safety", display: "INDUSTRIAL SAFETY", iconSrc: "/icon2.png" },
-    { value: "Sustainables", display: "SUSTAINABLES", iconSrc: "/icon3.png" },
-    { value: "Sportswear", display: "SPORTSWEAR", iconSrc: "/icon4.png" },
+    {
+      value: "Corporate Uniforms",
+      display: <>CORPORATE UNIFORMS</>,
+      iconSrc: "/icon1.png",
+    },
+    {
+      value: "Industrial Safety",
+      display: "INDUSTRIAL SAFETY",
+      iconSrc: "/icon2.png",
+    },
+    {
+      value: "Sustainables",
+      display: "SUSTAINABLES",
+      iconSrc: "/icon3.png",
+    },
+    {
+      value: "Sportswear",
+      display: "SPORTSWEAR",
+      iconSrc: "/icon4.png",
+    },
   ];
 
   return (
@@ -23,23 +39,32 @@ export default function Categories({ active, setActive }) {
       {/* Desktop */}
       <section
         id="collection"
-        className="md:grid h-[250px] grid-cols-4 bg-[#4A505F] text-white px-4 md:px-12 lg:px-20 xl:px-32 hidden"
+        className="md:grid h-[200px] grid-cols-4 bg-[#4A505F] text-white px-4 md:px-12 lg:px-20 xl:px-32 hidden"
       >
         {categories.map(({ value, display, iconSrc }, index) => (
-          <button
-            key={value}
-            onClick={() => setActive(index)}
-            className={`
-              flex flex-col items-center justify-center gap-3 py-10 h-[250px]
-              transition-colors
-              ${active === index ? "bg-[#323741]" : "hover:bg-[#3d4350]"}
-            `}
-          >
-            <Image src={iconSrc} alt={value} width={200} height={200} />
-            <span className="font-extrabold text-2xl tracking-wide text-center">
-              {display}
-            </span>
-          </button>
+        <button
+  key={value}
+  onClick={() => setActive(index)}
+  className={`
+    flex flex-col items-center justify-center
+    h-[200px] w-full px-2
+    transition-colors
+    ${active === index ? "bg-[#323741]" : "hover:bg-[#3d4350]"}
+  `}
+>
+  <Image
+    src={iconSrc}
+    alt={value}
+    width={190}
+    height={190}
+    className="object-contain mb-2"  // <-- small space between icon and text
+  />
+  <span className="font-extrabold text-sm text-center leading-tight">
+    {display}
+  </span>
+</button>
+
+
         ))}
       </section>
 

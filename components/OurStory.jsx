@@ -46,27 +46,29 @@ export default function OurStorySection() {
           <p className="text-gray-700 text-base leading-relaxed">
             We believe that uniforms should be more than garments—they should be
             experiences. With decades of expertise, we’ve perfected a harmonious blend of
-            style, comfort, and durability, using premium materials like 100% cotton and
-            innovative fabric technologies.
+            style, comfort.
           </p>
 
-          <EnquiryModal
-                  trigger={
-                    <button className="
-                      w-[180px]
-                      sm:w-45
-                      px-5
-                      py-3
-                      bg-[#1c1c57]
-                      text-white
-                      text-base
-                      font-semibold
-                      rounded-none
-                    ">
-                      ENQUIRE NOW
-                    </button>
-                  }
-                />
+         <div className="mt-6">
+  <EnquiryModal
+    trigger={
+      <button className="
+        w-[180px]
+        sm:w-45
+        px-5
+        py-3
+        bg-[#1c1c57]
+        text-white
+        text-base
+        font-semibold
+        rounded-none
+      ">
+        ENQUIRE NOW
+      </button>
+    }
+  />
+</div>
+
         </div>
       </div>
     </section>

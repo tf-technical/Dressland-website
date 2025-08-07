@@ -50,7 +50,7 @@ export default function Header() {
       <div className="bg-[#464b5e] text-white text-xs py-2 px-4 md:px-12 lg:px-20 xl:px-32">
         <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
           <div>
-            Support: +91 98900 98900 &nbsp; | &nbsp; Email:business@dresslanduniforms.in
+            Support: +91 8806612255 &nbsp; | &nbsp; Email:business@dresslanduniforms.in
           </div>
           <div className="flex space-x-2">
             <a href="#" className="bg-white text-[#464b5e] rounded-full p-1 hover:bg-gray-200 transition">
