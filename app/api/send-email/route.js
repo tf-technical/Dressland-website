@@ -7,15 +7,14 @@ export async function POST(req) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_ADDRESS, 
-        pass: process.env.EMAIL_PASSWORD, 
+        user: "dresslanduniforms@gmail.com", 
+        pass: process.env.EMAIL_PASSWORD,  
       },
     });
 
-    // Send email to company (Dressland CEO)
     await transporter.sendMail({
-      from: `"Website Enquiry" <${process.env.EMAIL_ADDRESS}>`,
-      to: "dresslandwebsite@gmail.com", 
+      from: `"Website Enquiry" <dresslanduniforms@gmail.com>`,
+      to: "business@dresslanduniforms.in",
       subject: `New Enquiry from ${name}`,
       html: `
         <h2>New Website Enquiry</h2>
@@ -26,9 +25,8 @@ export async function POST(req) {
       `,
     });
 
-    // Send confirmation email to visitor
     await transporter.sendMail({
-      from: `"Dressland" <${process.env.EMAIL_ADDRESS}>`,
+      from: `"Dressland" <dresslanduniforms@gmail.com>`,
       to: email,
       subject: "Thank you for your enquiry!",
       html: `

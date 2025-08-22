@@ -31,7 +31,7 @@ export default function Home() {
       <OurStorySection />
       <WhyChooseSection/>
       <TestimonialSection />
-      <Footer />
+      <Footer setActiveCategoryIndex={setActive} />
     </>
   );
 }

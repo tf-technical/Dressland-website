@@ -73,6 +73,7 @@ export default function CustomTshirtSection() {
 
       {/* Mobile Section */}
      <section
+     id="new-trends"
   className="
     block md:hidden
     w-full
