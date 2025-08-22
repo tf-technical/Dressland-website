@@ -105,15 +105,9 @@
 
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 export default function Categories({ active, setActive }) {
   const categories = [
@@ -139,26 +133,38 @@ export default function Categories({ active, setActive }) {
     },
   ];
 
-  const selectTriggerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  // OPTIONAL: Auto-open dropdown on mobile when user comes from footer
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Auto-open dropdown on mobile when user comes from footer
   useEffect(() => {
     const handleScroll = () => {
       const section = document.getElementById("collection");
       if (
         section &&
-        window.innerWidth < 768 && // only mobile
-        section.getBoundingClientRect().top < 100 // near top
+        window.innerWidth < 768 &&
+        section.getBoundingClientRect().top < 100
       ) {
-        // Open dropdown by simulating click
-        selectTriggerRef.current?.click();
-        // Remove listener so it doesn't reopen repeatedly
+        setIsOpen(true);
         window.removeEventListener("scroll", handleScroll);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -200,31 +206,43 @@ export default function Categories({ active, setActive }) {
         className="block md:hidden bg-[#4A505F] text-white mt-6 p-4"
       >
         <h2 className="text-lg font-bold mb-3">Select a Category</h2>
-        <Select
-          value={categories[active].value}
-          onValueChange={(value) => {
-            const index = categories.findIndex((c) => c.value === value);
-            setActive(index);
-          }}
-        >
-          <SelectTrigger
-            ref={selectTriggerRef}
-            className="w-full bg-[#323741] border border-[#5A5F70] text-white rounded-lg py-3 text-lg font-semibold hover:bg-[#3d4350] focus:ring-2 focus:ring-[#6C7A99]"
+        
+        {/* Custom dropdown implementation */}
+        <div className="relative" ref={dropdownRef}>
+          <button
+            className="w-full bg-[#323741] border border-[#5A5F70] text-white rounded-lg py-3 text-lg font-semibold hover:bg-[#3d4350] focus:ring-2 focus:ring-[#6C7A99] flex justify-between items-center px-4"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <SelectValue placeholder="Select Category" />
-          </SelectTrigger>
-          <SelectContent className="bg-[#3d4350] text-white rounded-lg shadow-lg">
-            {categories.map(({ value }) => (
-              <SelectItem
-                key={value}
-                value={value}
-                className="hover:bg-[#50576b] cursor-pointer text-base px-4 py-2"
-              >
-                {value}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+            <span>{categories[active].display}</span>
+            <ChevronDown 
+              className={`h-5 w-5 text-white flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+            />
+          </button>
+          
+          {/* Dropdown menu */}
+          {isOpen && (
+            <div className="absolute z-10 w-full mt-1 bg-[#3d4350] text-white rounded-lg shadow-lg border border-[#5A5F70]">
+              {categories.map(({ value, display }, index) => (
+                <button
+                  key={value}
+                  className={`w-full text-left hover:bg-[#50576b] cursor-pointer text-base px-4 py-2 focus:bg-[#50576b] ${
+                    index === 0 ? 'rounded-t-lg' : ''
+                  } ${
+                    index === categories.length - 1 ? 'rounded-b-lg' : ''
+                  } ${
+                    active === index ? 'bg-[#50576b]' : ''
+                  }`}
+                  onClick={() => {
+                    setActive(index);
+                    setIsOpen(false);
+                  }}
+                >
+                  {display}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
     </>
   );
