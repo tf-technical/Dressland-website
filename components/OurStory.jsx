@@ -2,34 +2,30 @@
 import Image from "next/image";
 import EnquiryModal from "./EnquiryModal";
 
-
 export default function OurStorySection() {
   return (
     <section id="about-us" className="bg-white py-20 px-4 md:px-10 lg:px-20">
 
-      {/* Centered Section Heading */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#1c1c57] uppercase tracking-wide">
-          Our Story
-        </h2>
-      </div>
+      {/* Optional spacing if heading is removed */}
+      <div className="mb-12" />
 
       {/* Content Grid */}
       <div className="max-w-screen-xl mx-auto grid md:grid-cols-2 items-center gap-12">
         
-        {/* Image - Left (smaller, no shadow) */}
+        {/* Image - Left (Check original image for blue tint issue) */}
         <div className="relative w-full h-[400px] md:h-[450px] rounded-lg overflow-hidden">
           <Image
-            src="/ABOUT_US.jpg"
-            alt="Our Story"
+            src="/staff-uniform.webp"
+            alt="About Us"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-top"
             priority
+            // Consider adding placeholder="blur" if needed
           />
         </div>
 
-        {/* Text - Right (no card style) */}
+        {/* Text - Right */}
         <div>
           <h4 className="text-[#c07c41] text-sm font-semibold tracking-widest mb-2 uppercase">
             About Us
@@ -49,26 +45,25 @@ export default function OurStorySection() {
             style, comfort.
           </p>
 
-         <div className="mt-6">
-  <EnquiryModal
-    trigger={
-      <button className="
-        w-[180px]
-        sm:w-45
-        px-5
-        py-3
-        bg-[#1c1c57]
-        text-white
-        text-base
-        font-semibold
-        rounded-none
-      ">
-        ENQUIRE NOW
-      </button>
-    }
-  />
-</div>
-
+          <div className="mt-6">
+            <EnquiryModal
+              trigger={
+                <button className="
+                  w-[180px]
+                  sm:w-45
+                  px-5
+                  py-3
+                  bg-[#1c1c57]
+                  text-white
+                  text-base
+                  font-semibold
+                  rounded-none
+                ">
+                  ENQUIRE NOW
+                </button>
+              }
+            />
+          </div>
         </div>
       </div>
     </section>

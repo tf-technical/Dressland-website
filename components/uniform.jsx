@@ -18,7 +18,7 @@ export default function UniformsSection({ activeCategory }) {
       },
       {
         title: "Shirts",
-        img: "/shirts.jpg",
+        img: "/shirt.jpg",
         info: ["Elegant Styles", "Perfect Fit", "GET A QUOTE"],
       },
       {
@@ -28,12 +28,12 @@ export default function UniformsSection({ activeCategory }) {
       },
       {
         title: "Polo T-Shirts",
-        img: "/polo _tshirt.webp",
+        img: "/polo.jpg",
         info: ["Stylish Casual", "Breathable Fabric", "GET A QUOTE"],
       },
       {
         title: "Jeans",
-        img: "/corporate_jeans.jpg",
+        img: "/jeans.jpg",
         info: ["Stretchable Fit", "Everyday Wear", "GET A QUOTE"],
       },
     ],
@@ -71,23 +71,23 @@ export default function UniformsSection({ activeCategory }) {
     ],
     Sustainables: [
       {
-        title: "T-Shirts",
-        img: "/SustainableT.shirts.webp",
+        title: " Organic cotton mens T-Shirts",
+        img: "/Organic cotton mens T-Shirts.webp",
         info: ["Eco Friendly", "Modern Fit", "GET A QUOTE"],
       },
       {
         title: "Organic Cotton T-Shirts",
-        img: "/Organic _cottontshirt.jpg",
+        img: "/Organic _cottontshirts.jpg",
         info: ["Chemical-Free", "Natural Comfort", "GET A QUOTE"],
       },
       {
         title: "Sweatshirts",
-        img: "/Sweatshirts.webp",
+        img: "/sweatshirts.jpg",
         info: ["Recycled Materials", "Sustainable Style", "GET A QUOTE"],
       },
       {
         title: "Mens Polo T-shirt",
-        img: "/mens_polotshirt.webp",
+        img: "/sustainables_polo.jpg",
         info: ["Classic Fit", "Breathable Fabric", "GET A QUOTE"],
       },
       {
@@ -104,12 +104,12 @@ export default function UniformsSection({ activeCategory }) {
     Sportswear: [
       {
         title: "Dryfit T-Shirts",
-        img: "/dry fit shirt.jpg",
+        img: "/Dryfit T-Shirts1.jpg",
         info: ["Moisture Wicking", "Quick Dry", "GET A QUOTE"],
       },
       {
         title: "Sweatshirts",
-        img: "/sweatshirt.jpg",
+        img: "/sweatshirt_sportwear.jpg",
         info: ["Warm & Soft", "Athletic Fit", "GET A QUOTE"],
       },
       {
@@ -135,19 +135,22 @@ export default function UniformsSection({ activeCategory }) {
   return (
     <section
       id={activeCategory.replace(/\s+/g, '-')}
-      className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-20 text-center"
+      className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-20"
     >
-      <h2 className="text-4xl md:text-5xl font-extrabold text-[#28275b]">
-        {activeCategory}
-      </h2>
+      {/* Left-aligned heading and subheading */}
+      <div className="text-left">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#28275b]">
+          {activeCategory}
+        </h2>
 
-      <p className="mt-6 max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
-        {activeCategory === "Corporate Uniforms"
-          ? "We specialize in creating custom corporate uniforms tailored to your exact needs and preferences."
-          : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
-      </p>
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-700">
+          {activeCategory === "Corporate Uniforms"
+            ? "We specialize in creating custom corporate uniforms tailored to your exact needs and preferences."
+            : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
+        </p>
+      </div>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 place-items-center">
+      <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
         {cards.map((card, index) => {
           const cardId = `${activeCategory}-${index}`;
           const showOverlay = hoverCard === cardId || activeCard === cardId;
@@ -178,18 +181,21 @@ export default function UniformsSection({ activeCategory }) {
                   sizes="224px"
                 />
 
+                {/* Left-aligned card info */}
                 <div
                   className={`absolute bottom-0 ${
-                    showOverlay ? "translate-y-0" : "translate-y-[90%]"}
-                    transition-all duration-150 left-0 w-full p-4 bg-[#28275b] text-white text-sm flex flex-col items-center gap-1`}
+                    showOverlay ? "translate-y-0" : "translate-y-[90%]"
+                  } transition-all duration-150 left-0 w-full p-4 bg-[#28275b] text-white text-sm flex flex-col items-start gap-1`}
                 >
                   {card.info.slice(0, -1).map((line) => (
-                    <span key={line}>{line}</span>
+                    <span key={line} className="text-left">
+                      {line}
+                    </span>
                   ))}
                   <EnquiryModal
                     trigger={
                       <button
-                        className="underline font-medium text-white"
+                        className="underline font-medium text-white text-left"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {card.info.at(-1)}
@@ -199,26 +205,31 @@ export default function UniformsSection({ activeCategory }) {
                 </div>
               </div>
 
-              <h3 className="mt-6 text-xl font-extrabold text-[#28275b]">
-                {card.title}
-              </h3>
-              <span className="text-[#28275b]/70 tracking-wide">
-                {activeCategory}
-              </span>
+              {/* Left-aligned card title and category */}
+              <div className="mt-6 text-left">
+                <h3 className="text-xl font-extrabold text-[#28275b]">
+                  {card.title}
+                </h3>
+                <span className="text-[#28275b]/70 tracking-wide">
+                  {activeCategory}
+                </span>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <EnquiryModal
-        open={enquiryModalOpen}
-        onOpenChange={setEnquiryModalOpen}
-        trigger={
-          <button className="mt-10 px-12 py-4 bg-[#28275b] text-white text-lg font-semibold hover:opacity-90">
-            ENQUIRE NOW
-          </button>
-        }
-      />
+      <div className="text-left mt-10">
+        <EnquiryModal
+          open={enquiryModalOpen}
+          onOpenChange={setEnquiryModalOpen}
+          trigger={
+            <button className="px-12 py-4 bg-[#28275b] text-white text-lg font-semibold hover:opacity-90">
+              ENQUIRE NOW
+            </button>
+          }
+        />
+      </div>
 
       <style jsx>{`
         @keyframes fadeIn {
