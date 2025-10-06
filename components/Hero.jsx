@@ -248,21 +248,15 @@ export default function HeroSlider() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col sm:flex-row items-center justify-between h-full w-full pt-12 md:px-4 lg:px-24">
+            <div className="flex flex-col md:flex-row items-center md:items-center justify-between h-full w-full pt-12 px-4 md:px-8 lg:px-24">
               
-              <div className="z-20 text-left max-w-lg">
+              <div className="z-20 text-left w-full md:max-w-lg">
                 <h2 className="text-white text-sm sm:text-lg md:text-xl font-medium mb-3 sm:mb-4 drop-shadow-md">
                   {slide.subtitle}
                 </h2>
 
                 <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold drop-shadow-md mb-6 leading-tight">
-                  {slide.title === "CORPORATE UNIFORMS" ? (
-                    <>
-                      CORPORATE <br className="block sm:hidden" /> UNIFORMS
-                    </>
-                  ) : (
-                    slide.title
-                  )}
+                  {slide.title}
                 </h1>
 
                 <EnquiryModal
@@ -275,12 +269,12 @@ export default function HeroSlider() {
               </div>
 
               
-              <div className="relative w-full sm:w-1/2 h-64 sm:h-full flex justify-center sm:justify-end mt-6 sm:mt-0">
+              <div className="relative w-full md:w-1/2 h-64 md:h-full flex justify-center md:justify-end mt-6 md:mt-0">
                 <Image
                   src={slide.image}
                   alt={slide.title}
                   fill
-                  className="object-contain sm:object-right transition-transform duration-500"
+                  className="object-contain md:object-right transition-transform duration-500"
                   priority
                 />
               </div>

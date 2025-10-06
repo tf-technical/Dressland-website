@@ -38,7 +38,7 @@ export default function Footer({ setActiveCategoryIndex }) {
                 className="h-auto"
               />
             </div>
-            <p className="text-gray-600 text-[10px] sm:text-xs leading-relaxed mb-4">
+            <p className="text-gray-600 text-md leading-relaxed mb-4">
               Your trusted partner for premium uniforms and workwear. Quality craftsmanship meets innovative design for corporate, industrial, and sports solutions.
             </p>
             <div className="flex space-x-3">
@@ -73,7 +73,7 @@ export default function Footer({ setActiveCategoryIndex }) {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col flex-1 min-w-full md:min-w-[220px]">
+          <div className="flex flex-col flex-1 min-w-full md:min-w-[220px] md:text-sm">
             <h3 className="font-semibold text-base sm:text-lg mb-3">CONTACT INFO</h3>
             <div className="space-y-2 text-gray-700 text-xs sm:text-base">
               <p className="flex items-start gap-2">

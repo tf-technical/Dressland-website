@@ -141,7 +141,7 @@ export default function CustomTshirtSection() {
     {/* Right - Image */}
     <div className="flex-shrink-0 w-44">
       <Image
-        src="/new-trends.png"
+        src="/trends-2.png"
         width={600}
         height={600}
         alt="Custom T-shirt"

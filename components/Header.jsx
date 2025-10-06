@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import {
   FaLinkedinIn,
@@ -107,6 +108,7 @@ export default function Header() {
       <div className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="flex justify-between items-center py-4 px-4 md:px-12 lg:px-20 xl:px-32">
           {/* Logo */}
+          <Link href="/">
           <div className="p-2 rounded">
             <Image
               src="/dressland-logo.png"
@@ -115,6 +117,7 @@ export default function Header() {
               height={40}
             />
           </div>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-10 text-base font-medium text-[#464b5e] items-center">
