@@ -64,7 +64,7 @@ export default function Header() {
   };
 
   return (
-    <header className="font-[var(--font-montserrat)] shadow-sm">
+    <header className="font-[var(--font-montserrat)] shadow-sm sticky top-0 z-50">
       {/* Top Bar */}
       <div className="bg-[#464b5e] text-white text-xs py-2 px-4 md:px-12 lg:px-20 xl:px-32">
         <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
