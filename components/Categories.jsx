@@ -197,31 +197,31 @@ export default function Categories({ active, setActive }) {
           </button>
         ))}
       </section> */}
-      {/* Categories Section */}
+      {/* Desktop & Tablet */}
       <section
         id="collection-desktop"
-        className="hidden md:grid h-30 grid-cols-2 md:grid-cols-4 bg-[#4A505F] text-white px-4 md:px-12 lg:px-20 xl:px-32 gap-2"
+        className="hidden md:grid grid-cols-2 md:grid-cols-4 bg-[#4A505F] text-white px-4 md:px-8 lg:px-16 xl:px-24 gap-2"
       >
         {categories.map(({ value, display, iconSrc }, index) => (
           <button
             key={value}
             onClick={() => setActive(index)}
-            className={`
-        flex items-center justify-center gap-2 md:gap-3 lg:gap-4
-        px-4 md:px-2 lg:px-4
-        
-        transition-colors
-        ${active === index ? "bg-[#323741]" : "hover:bg-[#3d4350]"}
-      `}
+            className={` 
+              flex items-center justify-center gap-3 
+              h-[30px] md:h-[50px] lg:h-[70px] w-full
+              px-3 md:px-4 
+              transition-colors
+              ${active === index ? "bg-[#323741]" : "hover:bg-[#3d4350]"}
+            `}
           >
             <Image
               src={iconSrc}
               alt={value}
-              width={40}
-              height={40}
-              className="object-contain md:w-12 md:h-12 lg:w-16 lg:h-16"
+              width={28}
+              height={28}
+              className="object-contain md:w-10 md:h-10 lg:w-12 lg:h-12"
             />
-            <span className="font-extrabold text-xs md:text-sm lg:text-base text-center leading-tight">
+            <span className="font-extrabold text-xs md:text-sm lg:text-base leading-tight">
               {display}
             </span>
           </button>

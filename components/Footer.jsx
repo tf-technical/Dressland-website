@@ -30,13 +30,16 @@ export default function Footer({ setActiveCategoryIndex }) {
           {/* Logo and Social Icons */}
           <div className="flex flex-col flex-1 min-w-full md:min-w-[370px]">
             <div className="mb-4">
-              <Image
-                src="/dressland-logo.png"
-                alt="Dressland Logo"
-                width={180}
-                height={60}
-                className="h-auto"
-              />
+              {/* Logo with white padding and rounded corners */}
+              <div className="bg-white rounded-2xl p-4 inline-block shadow-sm">
+                <Image
+                  src="/dressland-logo.png"
+                  alt="Dressland Logo"
+                  width={180}
+                  height={60}
+                  className="h-auto"
+                />
+              </div>
             </div>
             <p className="text-gray-600 text-md leading-relaxed mb-4">
               Your trusted partner for premium uniforms and workwear. Quality craftsmanship meets innovative design for corporate, industrial, and sports solutions.

@@ -23,11 +23,11 @@ export default function CustomTshirtSection() {
       >
         <div>
           <Image
-            width={1200}
-            height={1200}
+            width={900}
+            height={900}
             src="/a.png"
             alt="Background"
-            className="absolute z-20 w-[90vw] max-w-[1150px] right-[-9%] top-1/2 -translate-y-1/2"
+            className="absolute z-20 w-[80vw] max-w-[700px] right-[-1%] top-1/2 -translate-y-1/2"
           />
         </div>
 
@@ -61,7 +61,7 @@ export default function CustomTshirtSection() {
 
           <EnquiryModal
             trigger={
-              <button className="mt-4 w-60 h-18 px-6 py-3 bg-[#1c1c57] text-2xl text-white font-semibold rounded-none">
+              <button className="mt-4 w-80 h-18 px-6 py-3 bg-[#1c1c57] text-2xl text-white font-semibold rounded-none">
                 ENQUIRE NOW
               </button>
             }
@@ -136,7 +136,7 @@ export default function CustomTshirtSection() {
             />
           </div>
 
-          <div className="flex-shrink-0 w-64 relative -top-4 -left-8">
+          <div className="flex-shrink-0 w-55 relative -top-4 -left-14 h-40">
             <Image
               src="/a.png"
               width={1000}
