@@ -6,7 +6,6 @@ import EnquiryModal from "@/components/EnquiryModal";
 export default function CustomTshirtSection() {
   return (
     <>
-      {/* Desktop / Tablet Section */}
       <section
         id="new-trends"
         className="
@@ -17,19 +16,18 @@ export default function CustomTshirtSection() {
           overflow-hidden
           flex-row
           items-center
-        bg-[#dac5ac]
+          bg-[#dac5ac]
           px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32
           py-12 md:py-0
         "
       >
-        {/* Background Image */}
         <div>
           <Image
-            width={1000}
-            height={1000}
-            src="/new-trends.png"
+            width={1200}
+            height={1200}
+            src="/a.png"
             alt="Background"
-            className="absolute z-10 w-[50vw] right-0 bottom-0"
+            className="absolute z-20 w-[90vw] max-w-[1150px] right-[-9%] top-1/2 -translate-y-1/2"
           />
         </div>
 
@@ -39,14 +37,14 @@ export default function CustomTshirtSection() {
             absolute top-[5%] right-20
             text-[7rem]
             font-bold text-[#d1a679]
-            opacity-60 z-0 leading-none select-none
+            opacity-60 z-10 leading-none select-none
           "
         >
           NEW TRENDS
         </h1>
 
         {/* Left Text Content */}
-        <div className="w-1/2 z-10 text-left">
+        <div className="w-1/2 z-30 text-left">
           <p className="text-3xl text-[#1c1c57] font-semibold mb-4">
             CUSTOMISED PRINTED
             <br /> T-SHIRTS
@@ -72,85 +70,83 @@ export default function CustomTshirtSection() {
       </section>
 
       {/* Mobile Section */}
-     <section
-     id="new-trends"
-  className="
-    block md:hidden
-    w-full
-    relative
-    overflow-hidden
-   bg-[#dac5ac]
-    px-4
-    py-12
-    min-h-[320px]
-  "
->
-  {/* "NEW TRENDS" behind text */}
-  <h1
-    className="
-      absolute
-      top-12
-      right-4
-      text-2xl
-      font-bold
-     text-[#d1a679]
-      opacity-60
-      z-0
-      leading-none
-      select-none
-      pointer-events-none
-    "
-  >
-    NEW TRENDS
-  </h1>
+      <section
+        id="new-trends"
+        className="
+          block md:hidden
+          w-full
+          relative
+          overflow-hidden
+          bg-[#dac5ac]
+          px-4
+          py-12
+          min-h-[320px]
+        "
+      >
+        {/* "NEW TRENDS" behind text */}
+        <h1
+          className="
+            absolute
+            top-12
+            right-4
+            text-2xl
+            font-bold
+            text-[#d1a679]
+            opacity-60
+            z-0
+            leading-none
+            select-none
+            pointer-events-none
+          "
+        >
+          NEW TRENDS
+        </h1>
 
-<div className="flex flex-row items-center justify-between gap-4 z-10">
-  {/* Left - Text content */}
-  <div className="flex-1 text-left">
-    <p className="text-xl text-[#1c1c57] font-semibold mb-3 whitespace-nowrap">
-      CUSTOMISED 
-      <br/>
-      PRINTED T-SHIRTS
-    </p>
-    <h1 className="text-xl font-bold text-white leading-tight mb-2 whitespace-nowrap">
-      WEAR YOUR STORY
-    </h1>
-    <h1 className="text-xl font-bold text-white leading-tight mb-6 whitespace-nowrap">
-      PRINT YOUR VIBE
-    </h1>
+        <div className="flex flex-row items-center justify-between gap-4 z-10 relative">
+          {/* Left - Text content */}
+          <div className="flex-1 text-left">
+            <p className="text-xl text-[#1c1c57] font-semibold mb-3 whitespace-nowrap">
+              CUSTOMISED 
+              <br/>
+              PRINTED T-SHIRTS
+            </p>
+            <h1 className="text-xl font-bold text-white leading-tight mb-2 whitespace-nowrap">
+              WEAR YOUR STORY
+            </h1>
+            <h1 className="text-xl font-bold text-white leading-tight mb-6 whitespace-nowrap">
+              PRINT YOUR VIBE
+            </h1>
 
-      <EnquiryModal
-        trigger={
-          <button className="
-            w-[180px]
-            sm:w-45
-            px-5
-            py-3
-            bg-[#1c1c57]
-            text-white
-            text-base
-            font-semibold
-            rounded-none
-          ">
-            ENQUIRE NOW
-          </button>
-        }
-      />
-    </div>
+            <EnquiryModal
+              trigger={
+                <button className="
+                  w-[180px]
+                  sm:w-45
+                  px-5
+                  py-3
+                  bg-[#1c1c57]
+                  text-white
+                  text-base
+                  font-semibold
+                  rounded-none
+                ">
+                  ENQUIRE NOW
+                </button>
+              }
+            />
+          </div>
 
-    {/* Right - Image */}
-    <div className="flex-shrink-0 w-44">
-      <Image
-        src="/trends-2.png"
-        width={600}
-        height={600}
-        alt="Custom T-shirt"
-        className="w-full h-auto object-contain"
-      />
-    </div>
-  </div>
-</section>
-
+          <div className="flex-shrink-0 w-64 relative -top-4 -left-8">
+            <Image
+              src="/a.png"
+              width={1000}
+              height={1000}
+              alt="Custom T-shirt"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -17,8 +17,8 @@ export default function Home() {
   const categories = [
     "Corporate Uniforms",
     "Industrial Safety",
-    "Sustainables",
     "Sportswear",
+    "Sustainables",
   ];
 
   return (

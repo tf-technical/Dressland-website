@@ -118,15 +118,16 @@ export default function Categories({ active, setActive }) {
       display: "INDUSTRIAL SAFETY",
       iconSrc: "/icon2.png",
     },
-    {
-      value: "Sustainables",
-      display: "SUSTAINABLES",
-      iconSrc: "/icon3.png",
-    },
+    
     {
       value: "Sportswear",
       display: "SPORTSWEAR",
       iconSrc: "/icon4.png",
+    },
+    {
+      value: "Sustainables",
+      display: "SUSTAINABLES",
+      iconSrc: "/icon3.png",
     },
   ];
 

@@ -69,6 +69,33 @@ export default function UniformsSection({ activeCategory }) {
         info: ["High Visibility", "Weather Resistant", "GET A QUOTE"],
       },
     ],
+    Sportswear: [
+      {
+        title: "Dryfit T-Shirts",
+        img: "/Dryfit T-Shirts1.jpg",
+        info: ["Moisture Wicking", "Quick Dry", "GET A QUOTE"],
+      },
+      {
+        title: "Sweatshirts",
+        img: "/sweatshirt_sportwear.jpg",
+        info: ["Warm & Soft", "Athletic Fit", "GET A QUOTE"],
+      },
+      {
+        title: "Jackets",
+        img: "/jackets.jpg",
+        info: ["Windproof", "Sporty Design", "GET A QUOTE"],
+      },
+      {
+        title: "Track Pants",
+        img: "/track_pants.webp",
+        info: ["Stretch Fit", "Breathable Fabric", "GET A QUOTE"],
+      },
+      {
+        title: "Caps",
+        img: "/caps.jpg",
+        info: ["Adjustable Fit", "Sun Protection", "GET A QUOTE"],
+      },
+    ],
     Sustainables: [
       {
         title: " Organic cotton mens T-Shirts",
@@ -101,33 +128,6 @@ export default function UniformsSection({ activeCategory }) {
         info: ["Warm & Cozy", "Perfect for All Seasons", "GET A QUOTE"],
       },
     ],
-    Sportswear: [
-      {
-        title: "Dryfit T-Shirts",
-        img: "/Dryfit T-Shirts1.jpg",
-        info: ["Moisture Wicking", "Quick Dry", "GET A QUOTE"],
-      },
-      {
-        title: "Sweatshirts",
-        img: "/sweatshirt_sportwear.jpg",
-        info: ["Warm & Soft", "Athletic Fit", "GET A QUOTE"],
-      },
-      {
-        title: "Jackets",
-        img: "/jackets.jpg",
-        info: ["Windproof", "Sporty Design", "GET A QUOTE"],
-      },
-      {
-        title: "Track Pants",
-        img: "/track_pants.webp",
-        info: ["Stretch Fit", "Breathable Fabric", "GET A QUOTE"],
-      },
-      {
-        title: "Caps",
-        img: "/caps.jpg",
-        info: ["Adjustable Fit", "Sun Protection", "GET A QUOTE"],
-      },
-    ],
   };
 
   const cards = sections[activeCategory] || [];
@@ -146,6 +146,12 @@ export default function UniformsSection({ activeCategory }) {
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-700">
           {activeCategory === "Corporate Uniforms"
             ? "We specialize in creating custom corporate uniforms tailored to your exact needs and preferences."
+            : activeCategory === "Industrial Safety"
+            ? "Explore our industrial safety collection designed for quality and style."
+            : activeCategory === "Sportswear"
+            ? "Explore our sportswear collection designed for quality and style."
+            : activeCategory === "Sustainables"
+            ? "Explore our sustainables collection designed for quality and style."
             : `Explore our ${activeCategory.toLowerCase()} collection designed for quality and style.`}
         </p>
       </div>

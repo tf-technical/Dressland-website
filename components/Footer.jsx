@@ -78,7 +78,7 @@ export default function Footer({ setActiveCategoryIndex }) {
             <div className="space-y-2 text-gray-700 text-xs sm:text-base">
               <p className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 text-gray-500 flex-shrink-0" />
-                <span>+91 8806612255</span>
+                <span>+91 88066 12255</span>
               </p>
               <p className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 text-gray-500 flex-shrink-0" />
