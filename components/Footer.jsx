@@ -22,7 +22,7 @@ export default function Footer({ setActiveCategoryIndex }) {
   };
 
   return (
-    <footer className="bg-[#f9f9f9] text-[#333] text-sm">
+    <footer className="bg-white text-[#333] text-sm">
       {/* Top Footer Content */}
       <div className="w-full py-10 px-4 md:px-12 lg:px-20 xl:px-32">
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 justify-between max-w-[90rem] mx-auto text-xs sm:text-sm">
@@ -31,7 +31,7 @@ export default function Footer({ setActiveCategoryIndex }) {
           <div className="flex flex-col flex-1 min-w-full md:min-w-[370px]">
             <div className="mb-4">
               {/* Logo with white padding and rounded corners */}
-              <div className="bg-white rounded-2xl p-4 inline-block shadow-sm">
+              <div className>
                 <Image
                   src="/dressland-logo.png"
                   alt="Dressland Logo"

@@ -83,13 +83,20 @@ export default function EnquiryModal({ trigger }) {
       newErrors.products = "Please select at least one product.";
     }
 
+    // Validate minimum quantity of 50 for each product
+    selectedProducts.forEach((product, index) => {
+      if (product.quantity < 50) {
+        newErrors[`productQuantity_${index}`] = `Minimum quantity for ${product.name} is 50`;
+      }
+    });
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async () => {
     if (!validateForm()) {
-      toast.error("❌ Please fill all required fields.");
+      toast.error("❌ Please fill all required fields correctly.");
       return;
     }
 
@@ -140,7 +147,7 @@ export default function EnquiryModal({ trigger }) {
     if (currentProduct) {
       setSelectedProducts([
         ...selectedProducts,
-        { name: currentProduct, quantity: 1 },
+        { name: currentProduct, quantity: 50 }, // Default quantity set to 50
       ]);
       setCurrentProduct("");
       setErrors({ ...errors, products: "" });
@@ -154,8 +161,64 @@ export default function EnquiryModal({ trigger }) {
 
   const handleQuantityChange = (index, quantity) => {
     const updated = [...selectedProducts];
-    updated[index].quantity = Math.max(1, parseInt(quantity) || 1);
+    const newQuantity = parseInt(quantity) || 50;
+    
+    if (newQuantity < 50) {
+      toast.error(`❌ Minimum quantity is 50 for ${updated[index].name}`);
+      updated[index].quantity = 50;
+    } else {
+      updated[index].quantity = newQuantity;
+    }
+    
     setSelectedProducts(updated);
+    
+    // Clear quantity error for this product if fixed
+    if (newQuantity >= 50 && errors[`productQuantity_${index}`]) {
+      const newErrors = { ...errors };
+      delete newErrors[`productQuantity_${index}`];
+      setErrors(newErrors);
+    }
+  };
+
+  const incrementQuantity = (index) => {
+    const updated = [...selectedProducts];
+    updated[index].quantity += 1;
+    setSelectedProducts(updated);
+    
+    // Clear any existing quantity error
+    if (errors[`productQuantity_${index}`]) {
+      const newErrors = { ...errors };
+      delete newErrors[`productQuantity_${index}`];
+      setErrors(newErrors);
+    }
+  };
+
+  const decrementQuantity = (index) => {
+    const updated = [...selectedProducts];
+    const newQuantity = updated[index].quantity - 1;
+    
+    if (newQuantity < 50) {
+      toast.error(`❌ Minimum quantity is 50 for ${updated[index].name}`);
+      return;
+    }
+    
+    updated[index].quantity = newQuantity;
+    setSelectedProducts(updated);
+    
+    // Clear any existing quantity error
+    if (errors[`productQuantity_${index}`]) {
+      const newErrors = { ...errors };
+      delete newErrors[`productQuantity_${index}`];
+      setErrors(newErrors);
+    }
+  };
+
+  const handleInputBlur = (index, value) => {
+    const quantity = parseInt(value) || 50;
+    if (quantity < 50) {
+      toast.error(`❌ Minimum quantity is 50 for ${selectedProducts[index].name}`);
+      handleQuantityChange(index, "50");
+    }
   };
 
   return (
@@ -296,7 +359,7 @@ export default function EnquiryModal({ trigger }) {
             {/* Product Selection */}
             <div className="flex flex-col gap-1">
               <Label htmlFor="product" className="font-medium text-sm">
-                Select Products *
+                Select Products * (Minimum order quantity: 50 pieces per product)
               </Label>
               <div className="flex gap-2">
                 <select
@@ -330,38 +393,75 @@ export default function EnquiryModal({ trigger }) {
             {selectedProducts.length > 0 && (
               <div className="flex flex-col gap-2">
                 <Label className="font-medium text-sm">Selected Products:</Label>
-                <div className="space-y-2 max-h-40 overflow-y-auto border border-gray-200 rounded-md p-2">
+                <div className="space-y-3 max-h-40 overflow-y-auto border border-gray-200 rounded-md p-3">
                   {selectedProducts.map((product, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between gap-2 bg-gray-50 p-2 rounded-md"
+                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gray-50 p-3 rounded-md border border-gray-200 relative"
                     >
-                      <span className="text-sm flex-1">{product.name}</span>
+                      <span className="text-sm font-medium flex-1">{product.name}</span>
                       <div className="flex items-center gap-2">
-                        <Label htmlFor={`qty-${index}`} className="text-xs">
-                          Qty:
+                        <Label htmlFor={`qty-${index}`} className="text-xs font-medium whitespace-nowrap">
+                          Quantity:
                         </Label>
-                        <Input
-                          id={`qty-${index}`}
-                          type="number"
-                          min="1"
-                          value={product.quantity}
-                          onChange={(e) =>
-                            handleQuantityChange(index, e.target.value)
-                          }
-                          className="w-16 px-2 py-1 text-sm rounded-md border-gray-300"
-                        />
+                        <div className="flex items-center border border-gray-300 rounded-md bg-white">
+                          {/* Decrement Button */}
+                          <button
+                            type="button"
+                            onClick={() => decrementQuantity(index)}
+                            className="px-2 py-1 text-gray-600 hover:text-[#1c1c57] hover:bg-gray-100 transition-colors border-r border-gray-300"
+                            disabled={product.quantity <= 50}
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                            </svg>
+                          </button>
+                          
+                          {/* Quantity Input */}
+                          <Input
+                            id={`qty-${index}`}
+                            type="number"
+                            min="50"
+                            value={product.quantity}
+                            onChange={(e) => handleQuantityChange(index, e.target.value)}
+                            onBlur={(e) => handleInputBlur(index, e.target.value)}
+                            className="w-20 px-2 py-1 text-sm text-center border-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          />
+                          
+                          {/* Increment Button */}
+                          <button
+                            type="button"
+                            onClick={() => incrementQuantity(index)}
+                            className="px-2 py-1 text-gray-600 hover:text-[#1c1c57] hover:bg-gray-100 transition-colors border-l border-gray-300"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                          </button>
+                        </div>
+                        
+                        {/* Remove Button */}
                         <Button
                           type="button"
                           onClick={() => handleRemoveProduct(index)}
-                          className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-md text-xs"
+                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs whitespace-nowrap"
                         >
                           Remove
                         </Button>
                       </div>
+                      
+                      {/* Quantity Error Message */}
+                      {errors[`productQuantity_${index}`] && (
+                        <p className="text-red-500 text-xs absolute -bottom-1 left-0 right-0 text-center bg-red-50 py-1 rounded-b-md">
+                          {errors[`productQuantity_${index}`]}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  * Minimum order quantity: 50 pieces per product
+                </p>
               </div>
             )}
 
